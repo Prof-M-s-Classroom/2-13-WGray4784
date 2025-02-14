@@ -28,13 +28,11 @@ template <typename T> class LinkedList {
 private:
     int length;
     Node<T> *head;
-    Node<T> *tail;
 
 public:
     LinkedList(T *value) {
         this->length = 1;
         this->head = new Node<T>(value);
-        this->tail = this->head;
     }
     ~LinkedList() {
         Node<T>* current = this->head;
@@ -73,8 +71,8 @@ public:
         while (temp->next!=NULL)
             temp = temp->next;
         delete temp;
-        tail->next = NULL;
         length--;
+        get(length-1)->next = NULL;
     }
 
     Node<T>* get(int index) {
